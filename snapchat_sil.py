@@ -61,10 +61,13 @@ def main():
     print("SNAPCHAT ARKADAŞ SİLME BOTU")
     print("=" * 40)
     
+    print("\n[!] ÖNEMLİ: Sohbet listesini EN ALTA kaydırdığınızdan emin olun!")
+    print("[!] Bot en alttaki kişiden başlayarak yukarı doğru siler.\n")
+    
     count = int(input("Kaç arkadaş silinsin? "))
     print(f"\n{count} arkadaş silinecek...")
-    print("3 saniye içinde başlıyor...\n")
-    time.sleep(3)
+    print("Listeyi en alta kaydırdıysanız 5 saniye içinde başlıyor...\n")
+    time.sleep(5)
     
     for i in range(count):
         print(f"[{i+1}/{count}] Siliniyor...")

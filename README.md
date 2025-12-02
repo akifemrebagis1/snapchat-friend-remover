@@ -17,6 +17,8 @@ Bu bot eğitim amaçlıdır. Kullanımından doğacak sonuçlardan kullanıcı s
 - ✅ Ayarlanabilir hız
 - ✅ Özelleştirilebilir koordinatlar
 
+> **Not:** Bot otomatik kaydırma yapmaz. Silme işlemi başlamadan önce sohbet listesini en alta kendiniz kaydırmalısınız. Bot en alttaki kişiden başlayarak yukarı doğru siler.
+
 ---
 
 ## 🚀 Hızlı Başlangıç (ADB Modu)
@@ -48,7 +50,9 @@ pip install -r requirements.txt
 
 4. Snapchat'i açın ve sohbet listesine gidin
 
-5. Botu çalıştırın:
+5. **ÖNEMLİ:** Sohbet listesini en alta kaydırın (bot en alttaki kişiden başlar)
+
+6. Botu çalıştırın:
 ```bash
 python snapchat_sil.py
 ```
