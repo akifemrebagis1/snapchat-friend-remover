@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-Snapchat Bot - Appium/Emulator Modu
-Appium ve Android Emulator kullanarak çalışır
+Snapchat Bot - Appium/Emulator Mode
+Snapchat Bot - Appium/Emülatör Modu
+
+TR: Appium ve Android Emulator kullanarak çalışır
+EN: Works using Appium and Android Emulator
 """
 
 from appium import webdriver
@@ -20,11 +23,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Test verileri
+# TR: Test verileri / EN: Test data
 TEST_FRIENDS = [
-    "ahmetali", "betul", "caner", "deniz", "emre",
-    "fatih", "gokhan", "huseyin", "ilhan", "jale",
-    "kaan", "levent", "mehmet", "nuray", "ozer"
+    "user1", "user2", "user3", "user4", "user5",
+    "user6", "user7", "user8", "user9", "user10",
+    "user11", "user12", "user13", "user14", "user15"
 ]
 
 class SnapchatBot:
@@ -37,7 +40,7 @@ class SnapchatBot:
             self.setup_driver()
     
     def setup_driver(self):
-        """Appium driver'ı başlat"""
+        """TR: Appium driver'ı başlat / EN: Initialize Appium driver"""
         try:
             logger.info("Appium'a bağlanılıyor...")
             
@@ -59,7 +62,7 @@ class SnapchatBot:
             raise
     
     def login(self, username: str, password: str) -> bool:
-        """Demo: Giriş simülasyonu"""
+        """TR: Giriş simülasyonu / EN: Login simulation"""
         if self.test_mode:
             logger.info(f"[DEMO] '{username}' ile giriş...")
             time.sleep(1)
@@ -106,7 +109,7 @@ class SnapchatBot:
             return False
     
     def navigate_to_friends(self) -> bool:
-        """Demo: Arkadaş listesine gitme"""
+        """TR: Arkadaş listesine git / EN: Navigate to friends list"""
         if self.test_mode:
             logger.info("[DEMO] Arkadaş listesine gidiliyor...")
             time.sleep(1)
@@ -134,7 +137,7 @@ class SnapchatBot:
             return False
     
     def get_friends(self) -> list:
-        """Demo: Arkadaş listesi"""
+        """TR: Arkadaş listesini al / EN: Get friends list"""
         if self.test_mode:
             logger.info(f"[DEMO] {len(TEST_FRIENDS)} test arkadaşı yükleniyor...")
             time.sleep(1)
@@ -165,7 +168,7 @@ class SnapchatBot:
             return []
     
     def remove_friend(self, friend_name: str) -> bool:
-        """Demo: Arkadaş silme"""
+        """TR: Arkadaş sil / EN: Remove friend"""
         if self.test_mode:
             logger.info(f"[DEMO] '{friend_name}' siliniyor...")
             time.sleep(0.3)
@@ -207,7 +210,7 @@ class SnapchatBot:
             return False
     
     def run(self, username: str, password: str, count: int):
-        """Bot'u çalıştır"""
+        """TR: Bot'u çalıştır / EN: Run the bot"""
         try:
             if not self.login(username, password):
                 logger.error("Giriş başarısız!")
