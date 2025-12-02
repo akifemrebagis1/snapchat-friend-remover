@@ -1,0 +1,5 @@
+# ADB modu için gerekli değil, standart kütüphaneler yeterli
+
+# Appium modu için:
+Appium-Python-Client>=3.0.0
+selenium>=4.0.0
