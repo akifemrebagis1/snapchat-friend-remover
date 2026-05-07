@@ -1,143 +1,92 @@
-# 🤖 Snapchat Friend Remover Bot
+# 👻 Snapchat Friend Remover
 
-**🇬🇧 [English](README_EN.md)** | **🇹🇷 Türkçe**
+> Automate the removal of Snapchat friends using ADB or Appium — supports both real devices and emulators.
 
----
-
-Snapchat arkadaş listesinden toplu arkadaş silme botu. İki farklı mod destekler:
-
-1. **ADB Modu** - Gerçek telefonda ADB kullanarak çalışır (önerilen)
-2. **Appium Modu** - Android Emulator üzerinde Appium ile çalışır
-
-## ⚠️ Uyarı
-
-Bu bot eğitim amaçlıdır. Kullanımından doğacak sonuçlardan kullanıcı sorumludur. Snapchat'in kullanım şartlarını ihlal edebilir ve hesabınızın askıya alınmasına neden olabilir.
-
-## 📋 Özellikler
-
-- ✅ Toplu arkadaş silme
-- ✅ Gerçek telefon desteği (ADB)
-- ✅ Emulator desteği (Appium)
-- ✅ Ayarlanabilir hız
-- ✅ Özelleştirilebilir koordinatlar
-
-> **Not:** Bot otomatik kaydırma yapmaz. Silme işlemi başlamadan önce sohbet listesini en alta kendiniz kaydırmalısınız. Bot en alttaki kişiden başlayarak yukarı doğru siler.
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![ADB](https://img.shields.io/badge/ADB-34A853?style=for-the-badge&logo=android&logoColor=white)
+![Appium](https://img.shields.io/badge/Appium-662D91?style=for-the-badge&logo=appium&logoColor=white)
 
 ---
 
-## 🚀 Hızlı Başlangıç (ADB Modu)
+## 🎯 What It Does
 
-### Gereksinimler
-- Python 3.8+
-- Android SDK (ADB)
-- USB Debugging aktif Android telefon
+Bulk-remove Snapchat friends automatically. Two modes available:
 
-### Kurulum
+| Mode | File | Device | Method |
+|------|------|--------|--------|
+| **ADB Mode** | `snapchat_sil.py` | Real phone via USB | Screen coordinate taps via ADB |
+| **Appium Mode** | `bot.py` | Android Emulator | UI element automation via Appium |
+
+---
+
+## ✨ Features
+
+- 🔄 **Batch removal** — process entire friend lists automatically
+- 📱 **Dual mode** — works with both physical devices and emulators
+- 🎯 **Coordinate-based ADB** — ultra-fast, no Appium dependency needed
+- 🤖 **Appium integration** — reliable UI element detection for emulators
+- ⚙️ **Configurable** — easy coordinate and device ID setup
+- 📋 **Bilingual** — Turkish & English documentation
+
+---
+
+## 🚀 Quick Start
+
+### ADB Mode (Real Phone)
 
 ```bash
-# Repoyu klonla
-git clone https://github.com/akifemrebagis1/snapchat-friend-remover.git
-cd snapchat-friend-remover
+# 1. Connect your phone via USB with USB debugging enabled
+# 2. Find your device ID
+adb devices
 
-# Bağımlılıkları yükle
-pip install -r requirements.txt
-```
-
-### Kullanım
-
-1. Telefonunuzda USB Debugging'i açın
-2. Telefonu USB ile bilgisayara bağlayın
-3. `snapchat_sil.py` dosyasındaki ayarları düzenleyin:
-   - `DEVICE` - Cihaz ID'nizi girin (`adb devices` komutuyla öğrenin)
-   - `ADB_PATH` - ADB yolunu girin
-   - Koordinatları cihazınıza göre ayarlayın
-
-4. Snapchat'i açın ve sohbet listesine gidin
-
-5. **ÖNEMLİ:** Sohbet listesini en alta kaydırın (bot en alttaki kişiden başlar)
-
-6. Botu çalıştırın:
-```bash
+# 3. Update DEVICE and coordinates in snapchat_sil.py
+# 4. Run
 python snapchat_sil.py
 ```
 
----
-
-## 📱 Koordinat Tespiti
-
-Her cihazın ekran boyutu farklı olduğundan koordinatları kendiniz belirlemelisiniz:
-
-1. Ekran görüntüsü alın:
-```bash
-adb shell screencap -p /sdcard/screen.png
-adb pull /sdcard/screen.png
-```
-
-2. Görüntüyü Paint veya benzeri bir programda açın
-3. İmleç koordinatlarını not alın
-4. `snapchat_sil.py` dosyasındaki koordinatları güncelleyin
-
-### Silme Akışı
-1. **LONG_PRESS** - Sohbet listesinde bir arkadaşa uzun basın
-2. **STEP2** - Açılan menüden "Arkadaşlık Ayarları" seçin
-3. **STEP3** - "Arkadaşı Kaldır" butonuna tıklayın
-4. **STEP4** - Onay popup'ında "Kaldır" butonuna tıklayın
-
----
-
-## 🖥️ Appium Modu (Emulator)
-
-Emulator kullanmak istiyorsanız `bot.py` dosyasını kullanın. Detaylı kurulum için [KURULUM.md](KURULUM.md) dosyasına bakın.
+### Appium Mode (Emulator)
 
 ```bash
+# 1. Install requirements
+pip install -r requirements.txt
+
+# 2. Start Appium server
+appium
+
+# 3. Launch Android emulator with Snapchat installed
+# 4. Run
 python bot.py
 ```
 
 ---
 
-## 📁 Dosya Yapısı
+## ⚙️ Configuration
 
+Edit the coordinate values in `snapchat_sil.py` to match your device's screen:
+
+```python
+LONG_PRESS_X, LONG_PRESS_Y = 476, 1721   # Long press on friend
+STEP2_X, STEP2_Y = 540, 1146              # Menu option
+STEP3_X, STEP3_Y = 264, 1796              # Remove Friend button
+STEP4_X, STEP4_Y = 532, 1214              # Confirm button
 ```
-├── snapchat_sil.py    # ADB modu (gerçek telefon)
-├── bot.py             # Appium modu (emulator)
-├── requirements.txt   # Python bağımlılıkları
-├── KURULUM.md         # Detaylı kurulum rehberi (TR)
-├── SETUP.md           # Detailed setup guide (EN)
-├── README.md          # Türkçe README
-└── README_EN.md       # English README
-```
+
+> 💡 **Tip:** Take a screenshot and use Paint/Preview to find the correct coordinates for your device resolution.
 
 ---
 
-## 🔧 Sorun Giderme
+## 📋 Requirements
 
-### ADB cihazı bulamıyor
-```bash
-adb devices
-```
-Cihaz listede görünmüyorsa:
-- USB Debugging açık mı kontrol edin
-- USB kablosunu değiştirin
-- Bilgisayarda ADB sürücülerini yükleyin
-
-### Tıklamalar çalışmıyor
-- Koordinatları kontrol edin
-- "USB debugging (Security settings)" seçeneğini açın
-- Bekleme sürelerini artırın
-
-### Snapchat hesap kilitlendi
-- Bot algılandı, hesabınız geçici olarak kilitlenmiş olabilir
-- Bekleme sürelerini artırın
-- Emulator yerine gerçek telefon kullanın
+- Python 3.8+
+- ADB (Android Debug Bridge) installed
+- For Appium mode: Appium server + Android emulator
 
 ---
 
-## 📄 Lisans
+## ⚠️ Disclaimer
 
-MIT License - Eğitim amaçlıdır.
+This tool is for **educational purposes only**. Use responsibly and in accordance with Snapchat's Terms of Service.
 
----
+## 📄 License
 
-## 🤝 Katkıda Bulunma
-
-Pull request'ler kabul edilir. Büyük değişiklikler için önce bir issue açın.
+MIT License
